@@ -8,26 +8,21 @@ const Header = () => {
           </a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
-              <a target="_blank" href="https://www.imdb.com/" rel="noreferrer">
-                IMDb
+              <a
+                target="_blank"
+                href="https://www.fortnite.com/"
+                rel="noreferrer"
+              >
+                Fortnite
               </a>
             </li>
             <li>
               <a
                 target="_blank"
-                href="https://www.rottentomatoes.com/"
+                href="https://store.epicgames.com/"
                 rel="noreferrer"
               >
-                Rotten Tomatoes
-              </a>
-            </li>
-            <li>
-              <a
-                target="_blank"
-                href="https://www.metacritic.com/"
-                rel="noreferrer"
-              >
-                Metacritic
+                EGS
               </a>
             </li>
           </ul>

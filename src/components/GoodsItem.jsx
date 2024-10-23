@@ -5,7 +5,10 @@ const GoodsItem = (props) => {
   return (
     <div className="card" id={mainId}>
       <div className="card-image">
-        <img src={displayAssets[0].full_background} alt="card" />
+        <img
+          src={displayAssets[0].full_background || displayAssets[0].url}
+          alt="card"
+        />
       </div>
       <div className="card-content">
         <span className="card-title">{displayName}</span>
@@ -14,7 +17,7 @@ const GoodsItem = (props) => {
       <div className="card-action">
         <button className="btn blue">Купить</button>
         <span className="right" style={{ fontSize: "1.6rem" }}>
-          {price.regularPrice} руб.
+          {price.regularPrice} V
         </span>
       </div>
     </div>
