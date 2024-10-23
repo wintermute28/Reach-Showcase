@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <div>
-      <nav className="orange darken-3">
+      <nav className="blue darken-3">
         <div className="nav-wrapper">
           <a href="" className="brand-logo">
             Fortnite Shop
