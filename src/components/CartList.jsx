@@ -52,7 +52,7 @@ const CartList = (props) => {
           <i className="material-icons white-text">delete_forever</i>
         </span>
       </li>
-      <li className="collection-item">
+      <li className="collection-item pagination-wrapper">
         <button className="secondary-content btn  blue darken-3 left">
           Оформить
         </button>
