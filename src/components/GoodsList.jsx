@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ShopContext } from "../context";
 import GoodsItem from "./GoodsItem";
 
-const GoodsList = (props) => {
-  const { goods = [], addToCart = Function.prototype } = props;
+const GoodsList = () => {
+  const { goods = [] } = useContext(ShopContext);
   const [pagination, setPagination] = useState(16);
   if (!goods.length) {
     return <h3>Nothing here</h3>;
   }
-  //327 < 320
-  // 327 < 10
 
   const newGoods = goods.slice(0, pagination);
 
@@ -24,7 +23,7 @@ const GoodsList = (props) => {
     <>
       <div className="goods">
         {newGoods.map((good) => (
-          <GoodsItem key={good.mainId} {...good} addToCart={addToCart} />
+          <GoodsItem key={good.mainId} {...good} />
         ))}
       </div>
       <div className="pagination-wrapper">
