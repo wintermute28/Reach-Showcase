@@ -4,12 +4,14 @@ import Preloader from "./Preloader";
 import GoodsList from "./GoodsList";
 import Cart from "./Cart";
 import CartList from "./CartList";
+import Alert from "./Alert";
 
 const Shop = () => {
   const [goods, setGoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [order, setOrder] = useState([]);
   const [isCartShow, setCartShow] = useState(false);
+  const [alertName, setAlertName] = useState("");
 
   const addToCart = (item) => {
     const itemIndex = order.findIndex(
@@ -34,11 +36,16 @@ const Shop = () => {
       });
       setOrder(newOrder);
     }
+    setAlertName(item.displayName);
   };
 
   const removeFromCart = (id) => {
     const newOrder = order.filter((el) => el.mainId !== id);
     setOrder(newOrder);
+  };
+
+  const clearCart = () => {
+    setOrder([]);
   };
 
   const incQuantity = (id) => {
@@ -68,11 +75,15 @@ const Shop = () => {
         return el;
       }
     });
-    setOrder(newOrder);
+    setOrder(newOrder.filter((el) => el.quantity > 0));
   };
 
   const handleCartShow = () => {
     setCartShow(!isCartShow);
+  };
+
+  const closeAlert = () => {
+    setAlertName("");
   };
 
   useEffect(function getGoods() {
@@ -101,8 +112,10 @@ const Shop = () => {
           removeFromCart={removeFromCart}
           incQuantity={incQuantity}
           decQuantity={decQuantity}
+          clearCart={clearCart}
         />
       )}
+      {alertName && <Alert name={alertName} closeAlert={closeAlert} />}
     </main>
   );
 };

@@ -7,6 +7,7 @@ const CartList = (props) => {
     removeFromCart = Function.prototype,
     incQuantity = Function.prototype,
     decQuantity = Function.prototype,
+    clearCart = Function.prototype,
   } = props;
 
   const totalPrice = order.reduce((sum, el) => {
@@ -43,9 +44,18 @@ const CartList = (props) => {
         className="collection-item active blue darken-3"
       >
         Общая стоимость: {totalPrice} V
-        <span style={{ cursor: "pointer" }} className="secondary-content">
+        <span
+          onClick={() => clearCart()}
+          style={{ cursor: "pointer" }}
+          className="secondary-content"
+        >
           <i className="material-icons white-text">delete_forever</i>
         </span>
+      </li>
+      <li className="collection-item">
+        <button className="secondary-content btn  blue darken-3 left">
+          Оформить
+        </button>
       </li>
     </ul>
   );
