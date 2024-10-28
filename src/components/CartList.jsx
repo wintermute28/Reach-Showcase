@@ -1,7 +1,13 @@
 import CartItem from "./CartItem";
 
 const CartList = (props) => {
-  const { order = [], handleCartShow = Function.prototype } = props;
+  const {
+    order = [],
+    handleCartShow = Function.prototype,
+    removeFromCart = Function.prototype,
+    incQuantity = Function.prototype,
+    decQuantity = Function.prototype,
+  } = props;
 
   const totalPrice = order.reduce((sum, el) => {
     return sum + el.price * el.quantity;
@@ -14,13 +20,21 @@ const CartList = (props) => {
         <span
           style={{ cursor: "pointer" }}
           onClick={handleCartShow}
-          class="secondary-content"
+          className="secondary-content"
         >
-          <i class="material-icons">close</i>
+          <i className="material-icons">close</i>
         </span>
       </li>
       {order.length ? (
-        order.map((item) => <CartItem key={item.mainId} {...item} />)
+        order.map((item) => (
+          <CartItem
+            key={item.mainId}
+            {...item}
+            removeFromCart={removeFromCart}
+            incQuantity={incQuantity}
+            decQuantity={decQuantity}
+          />
+        ))
       ) : (
         <li className="collection-item">Корзина пуста</li>
       )}
@@ -29,8 +43,8 @@ const CartList = (props) => {
         className="collection-item active blue darken-3"
       >
         Общая стоимость: {totalPrice} V
-        <span style={{ cursor: "pointer" }} class="secondary-content">
-          <i class="material-icons white-text">delete_forever</i>
+        <span style={{ cursor: "pointer" }} className="secondary-content">
+          <i className="material-icons white-text">delete_forever</i>
         </span>
       </li>
     </ul>
